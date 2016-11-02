@@ -5,6 +5,18 @@
   background-color: #96E340;
 }
 
+#dealer-label,
+#player-label {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+#dealer-points,
+#player-points {
+  font-weight: bold;
+  font-size: 2em;
+}
+
 #dealer-label {
   margin-top: 15%;
   margin-left: 20px;
@@ -26,8 +38,8 @@
   border: none;
 }
 
-.buttons:focus {
-  outline: none;
+.table .buttons button:focus {
+  outline: 0;
 }
 
 .card {
