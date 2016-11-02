@@ -24,6 +24,17 @@ $(document).ready(function(){
 
   $("#playAgainButton").click(function(){
     $('#bustModal').modal('hide');
+        newGame();
+  });
+
+  $("#stand-button").click(function(){
+        $('#deal-button').prop('disabled', true);
+        $('#hit-button').prop('disabled', true);
+        while (dealerPts<17) {
+            giveCardDealer();
+            displayPoints();
+            checkBust();
+        }
   });
 
   function checkBust() {
@@ -153,3 +164,17 @@ $(document).ready(function(){
     return deck;
   }
 });
+
+function newGame() {
+    var deck;
+    var dealerHand = [];
+    var playerHand = [];
+    var dealerPts = 0;
+    var playerPts = 0;
+    $('#dealer-hand').text("");
+    $('#player-hand').text("");
+    $('#dealer-points').text('');
+    $('#player-points').text('');
+    $('#deal-button').prop('disabled', false);
+    $('#hit-button').prop('disabled', false);
+}
