@@ -1,3 +1,24 @@
+$(document).ready(function(){
+  var deck = newDeck();
+  $("#deal-button").click(function(){
+    for (var i = 0; i < 2; i++) {
+      urlPre = '';
+      var urlDeal = urlPre + getCardImageUrl(deck[getRandomIntInclusive()]);
+      var urlPlayer = urlPre + getCardImageUrl(deck[getRandomIntInclusive()]);
+      console.log('URL DEALER: ' + urlDeal);
+      console.log('URL PLAYER: ' + urlPlayer);
+      $('#dealer-hand').append("<img class='card' src='" + urlDeal + "' />");
+      $('#player-hand').append("<img class='card' src='" + urlPlayer + "' />");
+    }
+  });
+});
+
+function getRandomIntInclusive() {
+  min = Math.ceil(0);
+  max = Math.floor(51);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function getCardImageUrl(card) {
   var name = card.point;
 
@@ -61,6 +82,5 @@ function newDeck() {
       deck.push({"point": idxNumber, "suit": suit});
     }
   }
-  console.log(deck);
   return deck;
 }
