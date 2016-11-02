@@ -11,6 +11,16 @@ $(document).ready(function(){
       $('#player-hand').append("<img class='card' src='" + urlPlayer + "' />");
     }
   });
+
+  $("#hit-button").on("click", function () {
+    urlPre = '';
+    var urlDeal = urlPre + getCardImageUrl(deck[getRandomIntInclusive()]);
+    var urlPlayer = urlPre + getCardImageUrl(deck[getRandomIntInclusive()]);
+    console.log('URL DEALER: ' + urlDeal);
+    console.log('URL PLAYER: ' + urlPlayer);
+    $('#dealer-hand').append("<img class='card' src='" + urlDeal + "' />");
+    $('#player-hand').append("<img class='card' src='" + urlPlayer + "' />");
+  });
 });
 
 function getRandomIntInclusive() {
