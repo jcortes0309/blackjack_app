@@ -35,7 +35,21 @@ $(document).ready(function(){
             displayPoints();
             checkBust();
         }
+        checkWin();
   });
+
+    function checkWin() {
+        if (dealerPts > playerPts) {
+            $('#bustModal').modal('show');
+            $('#loseMessage').text("Player loses! DEALER WINS!");
+        } else if (playerPts > dealerPts) {
+            $('#bustModal').modal('show');
+            $('#loseMessage').text("Dealer loses! PLAYER WINS!");
+        } else {
+            $('#bustModal').modal('show');
+            $('#loseMessage').text("It's a draw!");
+        }
+    }
 
   function checkBust() {
     if (dealerPts > 21) {
@@ -163,18 +177,33 @@ $(document).ready(function(){
     }
     return deck;
   }
+
+  function newGame() {
+      deck = newDeck();
+      dealerHand = [];
+      playerHand = [];
+      dealerPts = 0;
+      playerPts = 0;
+      $('#dealer-hand').text("");
+      $('#player-hand').text("");
+      $('#dealer-points').text('');
+      $('#player-points').text('');
+      $('#deal-button').prop('disabled', false);
+      $('#hit-button').prop('disabled', false);
+  }
+
 });
 
-function newGame() {
-    var deck;
-    var dealerHand = [];
-    var playerHand = [];
-    var dealerPts = 0;
-    var playerPts = 0;
-    $('#dealer-hand').text("");
-    $('#player-hand').text("");
-    $('#dealer-points').text('');
-    $('#player-points').text('');
-    $('#deal-button').prop('disabled', false);
-    $('#hit-button').prop('disabled', false);
-}
+// function newGame() {
+//     deck = newDeck();
+//     dealerHand = [];
+//     playerHand = [];
+//     dealerPts = 0;
+//     playerPts = 0;
+//     $('#dealer-hand').text("");
+//     $('#player-hand').text("");
+//     $('#dealer-points').text('');
+//     $('#player-points').text('');
+//     $('#deal-button').prop('disabled', false);
+//     $('#hit-button').prop('disabled', false);
+// }
