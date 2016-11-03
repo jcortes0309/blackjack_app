@@ -16,11 +16,12 @@ $(document).ready(function(){
     $('#hit-button').prop('disabled', false);
     $('#stand-button').prop('disabled', false);
     $('#dealer-points').hide();
-    debugger
     $(".card-back").show();
     for (var i = 0; i < 2; i++) {
       giveCardDealer();
-      $("#dealer-hand img:nth-child(2)").hide();
+      if (i==1) {
+        $("#dealer-hand img:nth-child(2)").hide();
+      }
       giveCardPlayer();
       displayPoints();
       checkBust();
@@ -29,7 +30,6 @@ $(document).ready(function(){
   });
 
   $("#hit-button").on("click", function () {
-    // giveCardDealer();
     giveCardPlayer();
     displayPoints();
     checkBust();
@@ -220,6 +220,8 @@ $(document).ready(function(){
       dealerPts = 0;
       playerPts = 0;
       $('#dealer-hand').text("");
+      $('#dealer-hand').append("<img class='card card-back' src='images/black_joker.png'/>");
+      $(".card-back").hide();
       $('#player-hand').text("");
       $('#dealer-points').text('');
       $('#player-points').text('');
