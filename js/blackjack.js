@@ -6,6 +6,8 @@ var playerPts = 0;
 
 $(document).ready(function(){
   deck = newDeck();
+  $(".card-back").hide();
+
   $('#hit-button').prop('disabled', true);
   $('#stand-button').prop('disabled', true);
 
@@ -13,8 +15,12 @@ $(document).ready(function(){
     $('#deal-button').prop('disabled', true);
     $('#hit-button').prop('disabled', false);
     $('#stand-button').prop('disabled', false);
+    $('#dealer-points').hide();
+    debugger
+    $(".card-back").show();
     for (var i = 0; i < 2; i++) {
       giveCardDealer();
+      $("#dealer-hand img:nth-child(2)").hide();
       giveCardPlayer();
       displayPoints();
       checkBust();
@@ -35,24 +41,27 @@ $(document).ready(function(){
   });
 
   $("#stand-button").click(function(){
-        $('#hit-button').prop('disabled', true);
-        while (dealerPts < 17) {
-            giveCardDealer();
-            displayPoints();
-            checkBust();
-            console.log('message: ' + $('#eventMessage').text());
-        }
-        if (dealerPts <= 21) {
-            checkWin();
-        }
-        console.log('message: ' + $('#eventMessage').text());
+    $('#hit-button').prop('disabled', true);
+    $(".card-back").hide();
+    $("#dealer-hand img:nth-child(2)").show();
+    $('#dealer-points').show();
+    while (dealerPts < 17) {
+      giveCardDealer();
+      displayPoints();
+      checkBust();
+      console.log('message: ' + $('#eventMessage').text());
+    }
+    if (dealerPts <= 21) {
+        checkWin();
+    }
+    console.log('message: ' + $('#eventMessage').text());
   });
 
     function checkBlackJack() {
-        if (playerPts == 21) {
-            $('#eventModal').modal('show');
-            $('#eventMessage').text("BLACKJACK!!!  Player Wins");
-        }
+      if (playerPts == 21) {
+        $('#eventModal').modal('show');
+        $('#eventMessage').text("BLACKJACK!!!  Player Wins");
+      }
     }
 
     function checkWin() {

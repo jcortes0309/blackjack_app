@@ -32,6 +32,10 @@
   margin-left: 20px;
 }
 
+#dealer-hand img {
+  height: 150px;
+}
+
 .buttons {
   text-align: center;
   margin-bottom: 80px;
@@ -43,7 +47,7 @@
 }
 
 .card {
-  width: 10%;
+  width: 11%;
   height: auto;
   margin-right: 10px;
 }
