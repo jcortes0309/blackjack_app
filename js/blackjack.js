@@ -3,9 +3,15 @@ var dealerHand = [];
 var playerHand = [];
 var dealerPts = 0;
 var playerPts = 0;
+var deckNumber = 3;
 
-$(document).ready(function(){
-  deck = newDeck();
+$(document).ready(function() {
+  deck = [];
+  for (var i = 0; i < deckNumber; i++) {
+    deck = deck.concat(newDeck());
+    console.log(deck.length);
+  }
+
   $(".card-back").hide();
 
   $('#hit-button').prop('disabled', true);
